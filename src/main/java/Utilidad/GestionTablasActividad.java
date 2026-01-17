@@ -6,19 +6,46 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * CLASE UTILITARIA PARA LA GESTIONTABLASACTIVIDAD
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class GestionTablasActividad {
 
+    /** ATRIBUTO MODELOTABLAACTIVIDADES */
     public static DefaultTableModel modeloTablaActividades = new DefaultTableModel() {
+        /**
+         * VERIFICA SI CELLEDITABLE
+         *
+         * @param row PARAMETRO ROW
+         * @param column PARAMETRO COLUMN
+         * @return RETORNA BOOLEAN
+         */
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
     };
 
+    /**
+     * INICIALIZA LOS COMPONENTES Y CONFIGURACIONES
+     *
+     * @param vActividad PARAMETRO VACTIVIDAD
+     * @return RETORNA STATIC VOID
+     */
     public static void inicializarTablaActividades(VistaActividad vActividad) {
         vActividad.jTableActividades.setModel(modeloTablaActividades);
     }
 
+    /**
+     * METODO DIBUJARTABLAACTIVIDADES
+     *
+     * @param vActividad PARAMETRO VACTIVIDAD
+     * @return RETORNA STATIC VOID
+     */
     public static void dibujarTablaActividades(VistaActividad vActividad) {
         // AÑADIDA COLUMNA "Monitor" al final
         String[] columnas = {"ID", "Nombre", "Día", "Hora", "Descripción", "Precio", "Monitor"};
@@ -32,6 +59,11 @@ public class GestionTablasActividad {
         vActividad.jTableActividades.getColumnModel().getColumn(4).setPreferredWidth(200); // Descripción
     }
 
+    /**
+     * METODO RELLENARTABLAACTIVIDADES
+     *
+     * @param actividades PARAMETRO ACTIVIDADES
+     */
     public static void rellenarTablaActividades(List<Actividad> actividades) {
         vaciarTablaActividades();
         Object[] fila = new Object[7]; // Aumentado a 7 columnas
@@ -55,6 +87,10 @@ public class GestionTablasActividad {
         }
     }
 
+    /**
+     * METODO VACIARTABLAACTIVIDADES
+     *
+     */
     public static void vaciarTablaActividades() {
         modeloTablaActividades.setRowCount(0);
     }

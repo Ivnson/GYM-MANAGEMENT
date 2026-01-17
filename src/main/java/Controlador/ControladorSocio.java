@@ -16,14 +16,26 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE SOCIO
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorSocio implements ActionListener {
 
+      /** ATRIBUTO VSOCIO */
     private VistaSocio vSocio;
+    /** ATRIBUTO VDIALOGO */
     private VistaDialogoSocio vDialogo;
+    /** ATRIBUTO SF */
     private SessionFactory sf;
+    /** ATRIBUTO SOCIODAO */
     private SocioDAO socioDAO;
 
     // Formato de fecha que usas en tu base de datos (dd/MM/yyyy)
+    /** ATRIBUTO FORMATOFECHA */
     private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
     public ControladorSocio(VistaSocio vSocio, SessionFactory sf) {
@@ -42,6 +54,10 @@ public class ControladorSocio implements ActionListener {
 
     }
 
+    /**
+     * METODO RELLENARTABLA
+     *
+     */
     public void rellenarTabla() {
         Session sesion = null;
         try {
@@ -57,6 +73,11 @@ public class ControladorSocio implements ActionListener {
         }
     }
 
+    /**
+     * METODO ACTIONPERFORMED
+     *
+     * @param e PARAMETRO E
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
@@ -118,7 +139,7 @@ public class ControladorSocio implements ActionListener {
                 vDialogo.jTextFieldTelefono.setText((String) vSocio.jTableSocios.getValueAt(fila, 4));
                 vDialogo.jTextFieldCorreo.setText((String) vSocio.jTableSocios.getValueAt(fila, 5));
 
-                // --- GESTIÓN DE FECHA CON JCALENDAR ---
+                // GESTIÓN DE FECHA CON JCALENDAR 
                 // Leemos el String de la tabla (ej: "20/08/2023")
                 String fechaString = (String) vSocio.jTableSocios.getValueAt(fila, 6);
                 if (fechaString != null && !fechaString.isEmpty()) {

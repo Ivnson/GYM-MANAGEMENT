@@ -21,6 +21,13 @@ import java.util.Set;
  *
  * @author ivan
  */
+/**
+ * CLASE ENTIDAD QUE REPRESENTA UN SOCIO EN EL SISTEMA PROPORCIONA
+ * FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ *
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 @Entity
 @Table(name = "SOCIO")
 @NamedQueries({
@@ -40,26 +47,53 @@ public class Socio implements Serializable {
     @Basic(optional = false)
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "numeroSocio")
+    /**
+     * IDENTIFICADOR UNICO DEL NUMEROSOCIO
+     */
     private String numeroSocio;
     @Basic(optional = false)
     @Column(name = "nombre")
+    /**
+     * ATRIBUTO NOMBRE
+     */
     private String nombre;
     @Basic(optional = false)
     @Column(name = "dni")
+    /**
+     * ATRIBUTO DNI
+     */
     private String dni;
     @Column(name = "fechaNacimiento")
+    /**
+     * ATRIBUTO FECHANACIMIENTO
+     */
     private String fechaNacimiento;
     @Column(name = "telefono")
+    /**
+     * ATRIBUTO TELEFONO
+     */
     private String telefono;
     @Column(name = "correo")
+    /**
+     * ATRIBUTO CORREO
+     */
     private String correo;
     @Basic(optional = false)
     @Column(name = "fechaEntrada")
+    /**
+     * ATRIBUTO FECHAENTRADA
+     */
     private String fechaEntrada;
     @Basic(optional = false)
     @Column(name = "categoria")
+    /**
+     * ATRIBUTO CATEGORIA
+     */
     private Character categoria;
     @ManyToMany(mappedBy = "socioSet")
+    /**
+     * COLECCION DE ACTIVIDADSET ASOCIADOS
+     */
     private Set<Actividad> actividadSet;
 
     public Socio() {
@@ -80,79 +114,174 @@ public class Socio implements Serializable {
         this.categoria = categoria;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO NUMEROSOCIO
+     *
+     * @return RETORNA STRING
+     */
     public String getNumeroSocio() {
         return numeroSocio;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO NUMEROSOCIO
+     *
+     * @param numeroSocio PARAMETRO NUMEROSOCIO
+     */
     public void setNumeroSocio(String numeroSocio) {
         this.numeroSocio = numeroSocio;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @return RETORNA STRING
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @param nombre PARAMETRO NOMBRE
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO DNI
+     *
+     * @return RETORNA STRING
+     */
     public String getDni() {
         return dni;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO DNI
+     *
+     * @param dni PARAMETRO DNI
+     */
     public void setDni(String dni) {
         this.dni = dni;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO FECHANACIMIENTO
+     *
+     * @return RETORNA STRING
+     */
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO FECHANACIMIENTO
+     *
+     * @param fechaNacimiento PARAMETRO FECHANACIMIENTO
+     */
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO TELEFONO
+     *
+     * @return RETORNA STRING
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO TELEFONO
+     *
+     * @param telefono PARAMETRO TELEFONO
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO CORREO
+     *
+     * @return RETORNA STRING
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO CORREO
+     *
+     * @param correo PARAMETRO CORREO
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO FECHAENTRADA
+     *
+     * @return RETORNA STRING
+     */
     public String getFechaEntrada() {
         return fechaEntrada;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO FECHAENTRADA
+     *
+     * @param fechaEntrada PARAMETRO FECHAENTRADA
+     */
     public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO CATEGORIA
+     *
+     * @return RETORNA CHARACTER
+     */
     public Character getCategoria() {
         return categoria;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO CATEGORIA
+     *
+     * @param categoria PARAMETRO CATEGORIA
+     */
     public void setCategoria(Character categoria) {
         this.categoria = categoria;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO ACTIVIDADSET
+     *
+     * @return RETORNA SET<ACTIVIDAD>
+     */
     public Set<Actividad> getActividadSet() {
         return actividadSet;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO ACTIVIDADSET
+     *
+     * @param actividadSet PARAMETRO ACTIVIDADSET
+     */
     public void setActividadSet(Set<Actividad> actividadSet) {
         this.actividadSet = actividadSet;
     }
 
     @Override
+    /**
+     * METODO HASHCODE
+     *
+     * @return RETORNA INT
+     */
     public int hashCode() {
         int hash = 0;
         hash += (numeroSocio != null ? numeroSocio.hashCode() : 0);
@@ -160,8 +289,13 @@ public class Socio implements Serializable {
     }
 
     @Override
+    /**
+     * METODO EQUALS
+     *
+     * @param object PARAMETRO OBJECT
+     * @return RETORNA BOOLEAN
+     */
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Socio)) {
             return false;
         }
@@ -173,6 +307,11 @@ public class Socio implements Serializable {
     }
 
     @Override
+    /**
+     * METODO TOSTRING
+     *
+     * @return RETORNA STRING
+     */
     public String toString() {
         return getNumeroSocio() + " - " + getNombre();
     }

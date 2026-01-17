@@ -8,6 +8,13 @@ package Vista;
  *
  * @author ivan
  */
+/**
+ * INTERFAZ GRAFICA PARA LA GESTION DE ACTIVIDAD
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class VistaDialogoActividad extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaDialogoActividad.class.getName());

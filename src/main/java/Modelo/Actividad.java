@@ -22,6 +22,13 @@ import java.util.Set;
  *
  * @author ivan
  */
+/**
+ * CLASE ENTIDAD QUE REPRESENTA UN ACTIVIDAD EN EL SISTEMA PROPORCIONA
+ * FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ *
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 @Entity
 @Table(name = "ACTIVIDAD")
 @NamedQueries({
@@ -38,28 +45,52 @@ public class Actividad implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "idActividad")
+    /**
+     * IDENTIFICADOR UNICO DEL IDACTIVIDAD
+     */
     private String idActividad;
     @Basic(optional = false)
     @Column(name = "nombre")
+    /**
+     * ATRIBUTO NOMBRE
+     */
     private String nombre;
     @Basic(optional = false)
     @Column(name = "dia")
+    /**
+     * ATRIBUTO DIA
+     */
     private String dia;
     @Basic(optional = false)
     @Column(name = "hora")
+    /**
+     * ATRIBUTO HORA
+     */
     private int hora;
     @Column(name = "descripcion")
+    /**
+     * ATRIBUTO DESCRIPCION
+     */
     private String descripcion;
     @Basic(optional = false)
     @Column(name = "precioBaseMes")
+    /**
+     * ATRIBUTO PRECIOBASEMES
+     */
     private int precioBaseMes;
     @JoinTable(name = "REALIZA", joinColumns = {
         @JoinColumn(name = "idActividad", referencedColumnName = "idActividad")}, inverseJoinColumns = {
         @JoinColumn(name = "numeroSocio", referencedColumnName = "numeroSocio")})
     @ManyToMany
+    /**
+     * COLECCION DE SOCIOSET ASOCIADOS
+     */
     private Set<Socio> socioSet;
     @JoinColumn(name = "monitorResponsable", referencedColumnName = "codMonitor")
     @ManyToOne
+    /**
+     * ATRIBUTO MONITORRESPONSABLE
+     */
     private Monitor monitorResponsable;
 
     public Actividad() {
@@ -77,71 +108,157 @@ public class Actividad implements Serializable {
         this.precioBaseMes = precioBaseMes;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO IDACTIVIDAD
+     *
+     * @return RETORNA STRING
+     */
     public String getIdActividad() {
         return idActividad;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO IDACTIVIDAD
+     *
+     * @param idActividad PARAMETRO IDACTIVIDAD
+     */
     public void setIdActividad(String idActividad) {
         this.idActividad = idActividad;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @return RETORNA STRING
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @param nombre PARAMETRO NOMBRE
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO DIA
+     *
+     * @return RETORNA STRING
+     */
     public String getDia() {
         return dia;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO DIA
+     *
+     * @param dia PARAMETRO DIA
+     */
     public void setDia(String dia) {
         this.dia = dia;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO HORA
+     *
+     * @return RETORNA INT
+     */
     public int getHora() {
         return hora;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO HORA
+     *
+     * @param hora PARAMETRO HORA
+     */
     public void setHora(int hora) {
         this.hora = hora;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO DESCRIPCION
+     *
+     * @return RETORNA STRING
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO DESCRIPCION
+     *
+     * @param descripcion PARAMETRO DESCRIPCION
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO PRECIOBASEMES
+     *
+     * @return RETORNA INT
+     */
     public int getPrecioBaseMes() {
         return precioBaseMes;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO PRECIOBASEMES
+     *
+     * @param precioBaseMes PARAMETRO PRECIOBASEMES
+     */
     public void setPrecioBaseMes(int precioBaseMes) {
         this.precioBaseMes = precioBaseMes;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO SOCIOSET
+     *
+     * @return RETORNA SET<SOCIO>
+     */
     public Set<Socio> getSocioSet() {
         return socioSet;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO SOCIOSET
+     *
+     * @param socioSet PARAMETRO SOCIOSET
+     */
     public void setSocioSet(Set<Socio> socioSet) {
         this.socioSet = socioSet;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO MONITORRESPONSABLE
+     *
+     * @return RETORNA MONITOR
+     */
     public Monitor getMonitorResponsable() {
         return monitorResponsable;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO MONITORRESPONSABLE
+     *
+     * @param monitorResponsable PARAMETRO MONITORRESPONSABLE
+     */
     public void setMonitorResponsable(Monitor monitorResponsable) {
         this.monitorResponsable = monitorResponsable;
     }
 
-    @Override
+    /**
+     *
+     *
+     * @Override /** METODO HASHCODE
+     *
+     * @return RETORNA INT
+     */
     public int hashCode() {
         int hash = 0;
         hash += (idActividad != null ? idActividad.hashCode() : 0);
@@ -149,8 +266,13 @@ public class Actividad implements Serializable {
     }
 
     @Override
+    /**
+     * METODO EQUALS
+     *
+     * @param object PARAMETRO OBJECT
+     * @return RETORNA BOOLEAN
+     */
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Actividad)) {
             return false;
         }
@@ -162,6 +284,11 @@ public class Actividad implements Serializable {
     }
 
     @Override
+    /**
+     * METODO TOSTRING
+     *
+     * @return RETORNA STRING
+     */
     public String toString() {
         return getIdActividad() + " - " + getNombre();
     }

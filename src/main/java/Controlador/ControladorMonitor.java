@@ -15,14 +15,36 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE MONITOR PROPORCIONA FUNCIONALIDADES
+ * PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ *
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorMonitor implements ActionListener {
 
+    /**
+     * ATRIBUTO VMONITOR
+     */
     private VistaMonitor vMonitor;
+    /**
+     * ATRIBUTO SF
+     */
     private SessionFactory sf;
+    /**
+     * ATRIBUTO MONITORDAO
+     */
     private MonitorDAO monitorDAO;
+    /**
+     * ATRIBUTO VDIALOGO
+     */
     private VistaDialogoMonitor vDialogo;
 
     // Formato de fecha que usas en tu base de datos (dd/MM/yyyy)
+    /**
+     * ATRIBUTO FORMATOFECHA
+     */
     private SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
     public ControladorMonitor(VistaMonitor vMonitor, SessionFactory sf) {
@@ -40,6 +62,10 @@ public class ControladorMonitor implements ActionListener {
         this.vMonitor.jButtonActualizar.addActionListener(this);
     }
 
+    /**
+     * METODO RELLENARTABLA
+     *
+     */
     public void rellenarTabla() {
         Session sesion = null;
         try {
@@ -55,6 +81,11 @@ public class ControladorMonitor implements ActionListener {
         }
     }
 
+    /**
+     * METODO ACTIONPERFORMED
+     *
+     * @param e PARAMETRO E
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
@@ -168,7 +199,7 @@ public class ControladorMonitor implements ActionListener {
             String tlf = vDialogo.jTextFieldTelefono.getText();
             String mail = vDialogo.jTextFieldCorreo.getText();
 
-            // --- RECOGER FECHA DEL JCALENDAR ---
+            //  RECOGER FECHA DEL JCALENDAR 
             Date fechaSeleccionada = vDialogo.jDateChooserFechaEntrada.getDate();
             String fechaStr = "";
 
@@ -193,8 +224,7 @@ public class ControladorMonitor implements ActionListener {
             sesion = sf.openSession();
             tr = sesion.beginTransaction();
 
-            // Si el código ya existe en la tabla, Hibernate hará update. Si no, insert.
-            // Para ser más explícitos, podríamos comprobarlo, pero saveOrUpdate/merge funciona bien.
+            
             monitorDAO.actualizarMonitor(sesion, monitor); // Usamos actualizar (merge) para ambos casos
 
             tr.commit();

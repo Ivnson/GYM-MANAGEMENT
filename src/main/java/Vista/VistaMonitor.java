@@ -8,6 +8,13 @@ package Vista;
  *
  * @author ivan
  */
+/**
+ * INTERFAZ GRAFICA PARA LA GESTION DE MONITOR
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class VistaMonitor extends javax.swing.JPanel {
 
     /**

@@ -10,6 +10,13 @@ import Modelo.Actividad;
  *
  * @author ivan
  */
+/**
+ * INTERFAZ GRAFICA PARA LA GESTION DE INSCRIPCIONES
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class VistaInscripciones extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaInscripciones.class.getName());

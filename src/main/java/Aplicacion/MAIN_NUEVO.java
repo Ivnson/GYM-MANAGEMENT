@@ -8,6 +8,13 @@ package Aplicacion;
  *
  * @author ivan
  */
+/**
+ * CLASE MAIN_NUEVO
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class MAIN_NUEVO {
 
     /**

@@ -8,31 +8,68 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+/**
+ * CLASE DAO PARA LA GESTION DE OPERACIONES DE ACCESO A DATOS DE ACTIVIDAD
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ActividadDAO {
 
+    /** ATRIBUTO SF */
     private SessionFactory sf;
 
     public ActividadDAO(SessionFactory sessionFactory) {
         this.sf = sessionFactory;
     }
 
+   
     // 1. Listar todas
+    /**
+     * METODO LISTAACTIVIDADES
+     *
+     * @param sesion PARAMETRO SESION
+     * @return RETORNA LIST<ACTIVIDAD>
+     */
     public List<Actividad> listaActividades(Session sesion) {
         Query<Actividad> consulta = sesion.createNamedQuery("Actividad.findAll", Actividad.class);
         return consulta.getResultList();
     }
 
-    // 2. Insertar
+    
+   /**
+     * METODO PARA INSERTAR UNA NUEVA ACTIVIDAD EN LA BASE DE DATOS.
+     * UTILIZA LA SESION ACTUAL PARA PERSISTIR EL OBJETO ACTIVIDAD PROPORCIONADO.
+     *
+     * @param sesion LA SESION ACTIVA UTILIZADA PARA REALIZAR LA OPERACION DE PERSISTENCIA.
+     * @param actividad EL OBJETO ACTIVIDAD QUE SE DESEA GUARDAR EN LA BASE DE DATOS.
+     * @throws Exception SI OCURRE ALGUN ERROR DURANTE EL PROCESO DE GUARDADO.
+     */
     public void insertarActividad(Session sesion, Actividad actividad) throws Exception {
         sesion.persist(actividad);
     }
 
-    // 3. Actualizar
+    /**
+     * ACTUALIZA LA INFORMACION DE UNA ACTIVIDAD EXISTENTE EN LA BASE DE DATOS.
+     * UTILIZA EL METODO MERGE PARA SINCRONIZAR EL ESTADO DEL OBJETO CON LA BASE DE DATOS.
+     *
+     * @param sesion LA SESION ACTIVA QUE GESTIONA LA TRANSACCION.
+     * @param actividad EL OBJETO ACTIVIDAD QUE CONTIENE LOS DATOS MODIFICADOS.
+     * @throws Exception SI OCURRE UN ERROR DURANTE EL PROCESO DE ACTUALIZACION.
+     */
     public void actualizarActividad(Session sesion, Actividad actividad) throws Exception {
         sesion.merge(actividad);
     }
 
-    // 4. Borrar
+    /**
+     * ELIMINA UNA ACTIVIDAD DE LA BASE DE DATOS A PARTIR DE SU IDENTIFICADOR.
+     * PRIMERO BUSCA LA ACTIVIDAD MEDIANTE UNA CONSULTA NATIVA Y, SI EXISTE, LA ELIMINA.
+     *
+     * @param sesion LA SESION ACTIVA UTILIZADA PARA REALIZAR LA CONSULTA Y EL BORRADO.
+     * @param idActividad EL IDENTIFICADOR (STRING) DE LA ACTIVIDAD QUE SE DESEA BORRAR.
+     * @throws Exception SI NO SE ENCUENTRA LA ACTIVIDAD CON EL ID INDICADO O SI OCURRE UN ERROR DE BASE DE DATOS.
+     */
     public void borrarActividad(Session sesion, String idActividad) throws Exception {
         Query consulta = sesion.createNativeQuery("SELECT * FROM ACTIVIDAD  WHERE IDACTIVIDAD = ?", Actividad.class);
         consulta.setParameter(1, idActividad);
@@ -45,6 +82,12 @@ public class ActividadDAO {
         }
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO SIGUIENTECODIGO
+     *
+     * @param sesion PARAMETRO SESION
+     * @return RETORNA STRING
+     */
     public String getSiguienteCodigo(Session sesion) {
         String codigoMax = sesion.createNativeQuery("SELECT MAX(idActividad) FROM ACTIVIDAD", String.class)
                 .getSingleResult();
@@ -67,6 +110,16 @@ public class ActividadDAO {
     }
 
     // Método para validar conflictos de horario
+    /**
+     * METODO EXISTECONFLICTOMONITOR
+     *
+     * @param sesion PARAMETRO SESION
+     * @param codMonitor PARAMETRO CODMONITOR
+     * @param dia PARAMETRO DIA
+     * @param hora PARAMETRO HORA
+     * @param idActividadActual PARAMETRO IDACTIVIDADACTUAL
+     * @return RETORNA BOOLEAN
+     */
     public boolean existeConflictoMonitor(Session sesion, String codMonitor, String dia, int hora, String idActividadActual) {
         // Consultamos si hay alguna actividad con ese monitor, ese día y esa hora
         // Y IMPORTANTE: Que NO sea la actividad actual (idActividadActual) para permitir editarse a sí misma.
@@ -84,7 +137,15 @@ public class ActividadDAO {
         return conteo > 0; // Si devuelve > 0, es que hay conflicto
     }
 
-    // Método dinámico para filtrar por cualquier campo
+     // Método dinámico para filtrar por cualquier campo
+    /**
+     * METODO FILTRARACTIVIDADES
+     *
+     * @param sesion PARAMETRO SESION
+     * @param criterio PARAMETRO CRITERIO
+     * @param valor PARAMETRO VALOR
+     * @return RETORNA LIST<ACTIVIDAD>
+     */
     public List<Actividad> filtrarActividades(Session sesion, String criterio, String valor) {
         String hql = "SELECT a FROM Actividad a WHERE ";
 
@@ -133,6 +194,13 @@ public class ActividadDAO {
         return query.getResultList();
     }
 
+    /**
+     * METODO EJECUTARPROCEDIMIENTOESTADISTICAS
+     *
+     * @param sesion PARAMETRO SESION
+     * @param idActividad PARAMETRO IDACTIVIDAD
+     * @return RETORNA LIST<OBJECT>
+     */
     public List<Object> ejecutarProcedimientoEstadisticas(Session sesion, String idActividad) {
 
         // VARIABLE 1: NUMERO DE SOCIOS

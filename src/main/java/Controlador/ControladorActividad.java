@@ -18,14 +18,29 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE ACTIVIDAD
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorActividad implements ActionListener {
 
+       /** ATRIBUTO VACTIVIDAD */
     private VistaActividad vActividad;
+    /** ATRIBUTO VDIALOGO */
     private VistaDialogoActividad vDialogo;
+    /** ATRIBUTO SF */
     private SessionFactory sf;
+    /** ATRIBUTO ACTIVIDADDAO */
     private ActividadDAO actividadDAO;
+    /** ATRIBUTO MONITORDAO */
     private MonitorDAO monitorDAO;
+    /** ATRIBUTO VFILTRADO */
     private VistaFiltrado vFiltrado;
+    /** ATRIBUTO VESTADISTICAS */
     private VistaEstadisticas vEstadisticas;
 
     public ControladorActividad(VistaActividad vActividad, SessionFactory sf) {
@@ -44,6 +59,10 @@ public class ControladorActividad implements ActionListener {
         this.vActividad.jButtonFiltrar.addActionListener(this);
     }
 
+    /**
+     * METODO RELLENARTABLA
+     *
+     */
     public void rellenarTabla() {
         Session sesion = null;
         try {
@@ -59,6 +78,11 @@ public class ControladorActividad implements ActionListener {
         }
     }
 
+    /**
+     * METODO ACTIONPERFORMED
+     *
+     * @param e PARAMETRO E
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
@@ -219,7 +243,7 @@ public class ControladorActividad implements ActionListener {
             sesion = sf.openSession();
             tr = sesion.beginTransaction();
 
-            // --- VALIDACIÓN DE CONFLICTO DE HORARIO (NUEVO) ---
+            //  VALIDACIÓN DE CONFLICTO DE HORARIO (NUEVO)
             // Le preguntamos al DAO si este monitor ya está ocupado ese día/hora
             // Le pasamos el ID actual para que si estamos EDITANDO, no choque consigo mismo.
             boolean hayConflicto = actividadDAO.existeConflictoMonitor(sesion,
@@ -235,7 +259,7 @@ public class ControladorActividad implements ActionListener {
                         "Conflicto de Horario",
                         JOptionPane.WARNING_MESSAGE);
 
-                // IMPORTANTE: Hacemos rollback (por si acaso) y salimos del método
+                // IMPORTANTE: Hacemos rollback (por si acaso) y salimos del metodo
                 if (tr != null) {
                     tr.rollback();
                 }

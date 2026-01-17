@@ -16,8 +16,16 @@ import org.hibernate.SessionFactory;
  *
  * @author ivan
  */
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE CONEXION
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorConexion implements ActionListener {
 
+    /** ATRIBUTO SF */
     private SessionFactory sf;
     private Vista.VistaConexion VistaConexion;
 

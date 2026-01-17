@@ -19,6 +19,13 @@ import java.util.Set;
  *
  * @author ivan
  */
+/**
+ * CLASE ENTIDAD QUE REPRESENTA UN MONITOR EN EL SISTEMA PROPORCIONA
+ * FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ *
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 @Entity
 @Table(name = "MONITOR")
 @NamedQueries({
@@ -36,23 +43,47 @@ public class Monitor implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "codMonitor")
+    /**
+     * ATRIBUTO CODMONITOR
+     */
     private String codMonitor;
     @Basic(optional = false)
     @Column(name = "nombre")
+    /**
+     * ATRIBUTO NOMBRE
+     */
     private String nombre;
     @Basic(optional = false)
     @Column(name = "dni")
+    /**
+     * ATRIBUTO DNI
+     */
     private String dni;
     @Column(name = "telefono")
+    /**
+     * ATRIBUTO TELEFONO
+     */
     private String telefono;
     @Column(name = "correo")
+    /**
+     * ATRIBUTO CORREO
+     */
     private String correo;
     @Basic(optional = false)
     @Column(name = "fechaEntrada")
+    /**
+     * ATRIBUTO FECHAENTRADA
+     */
     private String fechaEntrada;
     @Column(name = "nick")
+    /**
+     * ATRIBUTO NICK
+     */
     private String nick;
     @OneToMany(mappedBy = "monitorResponsable")
+    /**
+     * COLECCION DE ACTIVIDADSET ASOCIADOS
+     */
     private Set<Actividad> actividadSet;
 
     public Monitor() {
@@ -79,73 +110,157 @@ public class Monitor implements Serializable {
         this.nick = nick;
         this.actividadSet = actividadSet;
     }
-    
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO CODMONITOR
+     *
+     * @return RETORNA STRING
+     */
     public String getCodMonitor() {
         return codMonitor;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO CODMONITOR
+     *
+     * @param codMonitor PARAMETRO CODMONITOR
+     */
     public void setCodMonitor(String codMonitor) {
         this.codMonitor = codMonitor;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @return RETORNA STRING
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO NOMBRE
+     *
+     * @param nombre PARAMETRO NOMBRE
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO DNI
+     *
+     * @return RETORNA STRING
+     */
     public String getDni() {
         return dni;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO DNI
+     *
+     * @param dni PARAMETRO DNI
+     */
     public void setDni(String dni) {
         this.dni = dni;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO TELEFONO
+     *
+     * @return RETORNA STRING
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO TELEFONO
+     *
+     * @param telefono PARAMETRO TELEFONO
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO CORREO
+     *
+     * @return RETORNA STRING
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO CORREO
+     *
+     * @param correo PARAMETRO CORREO
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO FECHAENTRADA
+     *
+     * @return RETORNA STRING
+     */
     public String getFechaEntrada() {
         return fechaEntrada;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO FECHAENTRADA
+     *
+     * @param fechaEntrada PARAMETRO FECHAENTRADA
+     */
     public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO NICK
+     *
+     * @return RETORNA STRING
+     */
     public String getNick() {
         return nick;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO NICK
+     *
+     * @param nick PARAMETRO NICK
+     */
     public void setNick(String nick) {
         this.nick = nick;
     }
 
+    /**
+     * OBTIENE EL VALOR DEL CAMPO ACTIVIDADSET
+     *
+     * @return RETORNA SET<ACTIVIDAD>
+     */
     public Set<Actividad> getActividadSet() {
         return actividadSet;
     }
 
+    /**
+     * ESTABLECE EL VALOR DEL CAMPO ACTIVIDADSET
+     *
+     * @param actividadSet PARAMETRO ACTIVIDADSET
+     */
     public void setActividadSet(Set<Actividad> actividadSet) {
         this.actividadSet = actividadSet;
     }
 
     @Override
+    /**
+     * METODO HASHCODE
+     *
+     * @return RETORNA INT
+     */
     public int hashCode() {
         int hash = 0;
         hash += (codMonitor != null ? codMonitor.hashCode() : 0);
@@ -153,8 +268,13 @@ public class Monitor implements Serializable {
     }
 
     @Override
+    /**
+     * METODO EQUALS
+     *
+     * @param object PARAMETRO OBJECT
+     * @return RETORNA BOOLEAN
+     */
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Monitor)) {
             return false;
         }
@@ -166,8 +286,13 @@ public class Monitor implements Serializable {
     }
 
     @Override
+    /**
+     * METODO TOSTRING
+     *
+     * @return RETORNA STRING
+     */
     public String toString() {
-        return getNombre() ; 
+        return getNombre();
     }
-    
+
 }

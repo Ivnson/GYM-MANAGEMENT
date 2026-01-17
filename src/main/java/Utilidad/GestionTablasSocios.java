@@ -14,19 +14,44 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ivan
  */
+/**
+ * CLASE UTILITARIA PARA LA GESTIONTABLASSOCIOS
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class GestionTablasSocios {
 
+    /** ATRIBUTO MODELOTABLASOCIOS */
     public static DefaultTableModel modeloTablaSocios = new DefaultTableModel() {
+        /**
+         * VERIFICA SI CELLEDITABLE
+         *
+         * @param row PARAMETRO ROW
+         * @param column PARAMETRO COLUMN
+         * @return RETORNA BOOLEAN
+         */
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
         }
     };
 
+    /**
+     * INICIALIZA LOS COMPONENTES Y CONFIGURACIONES
+     *
+     * @param vSocio PARAMETRO VSOCIO
+     */
     public static void inicializarTablaSocios(VistaSocio vSocio) {
         vSocio.jTableSocios.setModel(modeloTablaSocios);
     }
 
+    /**
+     * METODO DIBUJARTABLASOCIOS
+     *
+     * @param vSocio PARAMETRO VSOCIO
+     */
     public static void dibujarTablaSocios(VistaSocio vSocio) {
         String[] columnas = {"Num. Socio", "Nombre", "DNI", "Fecha Nac.", "Teléfono", "Correo", "Fecha Entrada", "Cat."};
         modeloTablaSocios.setColumnIdentifiers(columnas);
@@ -39,6 +64,11 @@ public class GestionTablasSocios {
         vSocio.jTableSocios.getColumnModel().getColumn(7).setPreferredWidth(40); // Categoría
     }
 
+    /**
+     * METODO RELLENARTABLASOCIOS
+     *
+     * @param socios PARAMETRO SOCIOS
+     */
     public static void rellenarTablaSocios(List<Socio> socios) {
         vaciarTablaSocios();
         Object[] fila = new Object[8];
@@ -56,6 +86,10 @@ public class GestionTablasSocios {
         }
     }
 
+    /**
+     * METODO VACIARTABLASOCIOS
+     *
+     */
     public static void vaciarTablaSocios() {
         modeloTablaSocios.setRowCount(0);
     }

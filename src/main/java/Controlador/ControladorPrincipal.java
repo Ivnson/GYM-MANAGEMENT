@@ -13,25 +13,43 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.hibernate.SessionFactory;
 
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE PRINCIPAL
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorPrincipal implements ActionListener {
 
+      /** ATRIBUTO SF */
     private SessionFactory sf;
 
     // Vistas
+    /** ATRIBUTO VPRINCIPAL */
     private VistaPrincipal vPrincipal;
+    /** ATRIBUTO VINICIO */
     private VistaInicio vInicio;
+    /** ATRIBUTO VMONITOR */
     private VistaMonitor vMonitor;
+    /** ATRIBUTO VSOCIO */
     private VistaSocio vSocio;
+    /** ATRIBUTO VACTIVIDAD */
     private VistaActividad vActividad ; 
 
     // Controladores hijos
+    /** ATRIBUTO CMONITOR */
     private ControladorMonitor cMonitor;
+    /** ATRIBUTO CSOCIO */
     private ControladorSocio cSocio;
+    /** ATRIBUTO CACTIVIDAD */
     private ControladorActividad cActividad;
     // El controlador de utilidades se crea bajo demanda (al pulsar el botón)
 
     // Gestión del Layout
+    /** ATRIBUTO CARDLAYOUT */
     private CardLayout cardLayout;
+    /** ATRIBUTO PANELCONTENEDOR */
     private JPanel panelContenedor;
 
     public ControladorPrincipal(SessionFactory sf) {
@@ -101,6 +119,11 @@ public class ControladorPrincipal implements ActionListener {
         panelContenedor.repaint();    // Pinta de nuevo los píxeles
     }
 
+    /**
+     * METODO ACTIONPERFORMED
+     *
+     * @param e PARAMETRO E
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object fuente = e.getSource();

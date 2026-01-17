@@ -87,7 +87,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInscripciones">
               <Properties>
                 <Property name="text" type="java.lang.String" value="menuItemInscripciones"/>
-                <Property name="actionCommand" type="java.lang.String" value="menuItemInscripciones"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

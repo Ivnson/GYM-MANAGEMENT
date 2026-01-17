@@ -7,11 +7,29 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+
+/**
+ * CLASE UTILITARIA PARA LA CONFIGURACION Y GESTION DE HIBERNATE
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class HibernateUtil {
 
+    /** ATRIBUTO SESSIONFACTORY */
     private static SessionFactory sessionFactory;
+    /** ATRIBUTO SERVICEREGISTRY */
     private static StandardServiceRegistry serviceRegistry;
 
+    
+    /**
+     * METODO BUILDSESSIONFACTORY
+     *
+     * @param user PARAMETRO USER
+     * @param pass PARAMETRO PASS
+     * @return RETORNA STATIC SESSIONFACTORY
+     */
     public static SessionFactory buildSessionFactory(String user, String pass) {
         try {
             serviceRegistry = new StandardServiceRegistryBuilder()
@@ -34,6 +52,12 @@ public class HibernateUtil {
         }
     }
 
+    
+    /**
+     * OBTIENE EL VALOR DEL CAMPO SESSIONFACTORY
+     *
+     * @return RETORNA STATIC SESSIONFACTORY
+     */
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             throw new IllegalStateException("La SessionFactory aún no está inicializada. "
@@ -42,6 +66,12 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    
+    /**
+     * METODO CLOSE
+     *
+     * @return RETORNA STATIC VOID
+     */
     public static void close() {
         try {
             if (sessionFactory != null && !sessionFactory.isClosed()) {

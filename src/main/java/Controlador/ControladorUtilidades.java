@@ -15,16 +15,30 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+/**
+ * CONTROLADOR PARA LA LOGICA DE NEGOCIO DE UTILIDADES
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class ControladorUtilidades implements ActionListener {
 
+    /** ATRIBUTO SF */
     private SessionFactory sf;
+    /** ATRIBUTO VINSCRIPCIONES */
     private VistaInscripciones vInscripciones;
+    /** ATRIBUTO SOCIODAO */
     private SocioDAO socioDAO;
+    /** ATRIBUTO ACTIVIDADDAO */
     private ActividadDAO actividadDAO;
 
     // Modelos para manejar los datos visuales de las listas
+    /** COLECCION DE MODELOINSCRITAS ASOCIADOS */
     private DefaultListModel<Object> modeloInscritas;
+    /** COLECCION DE MODELONOINSCRITAS ASOCIADOS */
     private DefaultListModel<Object> modeloNoInscritas;
+
 
     public ControladorUtilidades(SessionFactory sf) {
         this.sf = sf;

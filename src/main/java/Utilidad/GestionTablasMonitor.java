@@ -9,11 +9,26 @@ import javax.swing.table.DefaultTableModel;
 /**
  * Clase auxiliar para gestionar la tabla de Monitores
  */
+/**
+ * CLASE UTILITARIA PARA LA GESTIONTABLASMONITOR
+ * PROPORCIONA FUNCIONALIDADES PARA LA GESTION COMPLETA DEL SISTEMA DE GIMNASIO
+ * 
+ * @author SISTEMA DE GESTION DE GIMNASIO
+ * @version 1.0
+ */
 public class GestionTablasMonitor {
 
     // Definimos el modelo de la tabla (el objeto que guarda los datos)
     // Sobreescribimos isCellEditable para que el usuario no pueda editar las celdas directamente
+    /** ATRIBUTO MODELOTABLAMONITORES */
     public static DefaultTableModel modeloTablaMonitores = new DefaultTableModel() {
+        /**
+         * VERIFICA SI CELLEDITABLE
+         *
+         * @param row PARAMETRO ROW
+         * @param column PARAMETRO COLUMN
+         * @return RETORNA BOOLEAN
+         */
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
@@ -21,11 +36,21 @@ public class GestionTablasMonitor {
     };
 
     // 1. Inicializar la tabla: Asigna el modelo a la tabla de la vista
+    /**
+     * INICIALIZA LOS COMPONENTES Y CONFIGURACIONES
+     *
+     * @param vMonitor PARAMETRO VMONITOR
+     */
     public static void inicializarTablaMonitores(VistaMonitor vMonitor) {
         vMonitor.jTableMonitores.setModel(modeloTablaMonitores);
     }
 
     // 2. Dibujar la tabla: Define las columnas y sus anchos
+    /**
+     * METODO DIBUJARTABLAMONITORES
+     *
+     * @param vMonitor PARAMETRO VMONITOR
+     */
     public static void dibujarTablaMonitores(VistaMonitor vMonitor) {
         String[] columnas = {"Código", "Nombre", "DNI", "Teléfono", "Correo", "Fecha Incorp.", "Nick"};
 
@@ -43,6 +68,11 @@ public class GestionTablasMonitor {
     }
 
     // 3. Rellenar la tabla: Recibe la lista de monitores y crea las filas
+    /**
+     * METODO RELLENARTABLAMONITORES
+     *
+     * @param monitores PARAMETRO MONITORES
+     */
     public static void rellenarTablaMonitores(List<Monitor> monitores) {
         // Primero vaciamos la tabla para no duplicar datos si recargamos
         vaciarTablaMonitores();
@@ -63,6 +93,10 @@ public class GestionTablasMonitor {
     }
 
     // 4. Vaciar la tabla: Elimina todas las filas
+    /**
+     * METODO VACIARTABLAMONITORES
+     *
+     */
     public static void vaciarTablaMonitores() {
         modeloTablaMonitores.setRowCount(0);
     }
